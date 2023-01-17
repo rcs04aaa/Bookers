@@ -1,0 +1,17 @@
+<div>
+  <%= flash[:notice] %>
+</div>
+
+<h1>Editing Book</h1>
+
+<%= form_with model: @list, url: '/books', method: :post do |f| %>
+
+  <h4>タイトル</h4>
+  <%= f.text_field :title %>
+  
+  <h4>本文</h4>
+  <%= f.text_area :body %>
+  
+  <%= f.submit 'update' %>
+  
+<% end %>

@@ -1,0 +1,21 @@
+<h1>add New Book</h1>
+
+<% if @list.errors.any? %>
+  <%= @list.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @list.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_with model: @list, url: '/books', method: :post do |f| %>
+　<h4>title</h4>
+  <%= f.text_field :title %>
+  
+  <h4>body</h4>
+  <%= f.text_area :body %>
+  
+  <%= f.submit 'save' %>
+  
+<% end %>

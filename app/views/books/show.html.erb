@@ -1,0 +1,11 @@
+<div>
+  <%= flash[:notice] %>
+</div>
+
+<h2>title</h2>
+<p><%= @list.title %></p>
+
+<h2>body</h2>
+<p><%= @list.body %></p>
+<%= link_to "edit", edit_book_path(@list.id) %>
+<%= link_to "delete", book_path(@list.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
