@@ -3,7 +3,8 @@ class BooksController < ApplicationController
   def create
     @list = Book.new(book_params)
     if @list.save
-      flash[:notice] = "created successfully"
+      flash[:notice] = "Book was successfully created."
+      # "created successfully"
       redirect_to book_path(@list.id)
     else
       render :new
@@ -24,16 +25,21 @@ class BooksController < ApplicationController
   end
   
   def update
-    list = Book.find(params[:id])
-    list.update(book_params)
-    flash[:notice] = "updated successfully"
-    redirect_to book_path(list.id)  
+    @list = Book.find(params[:id])
+    if @list.update(book_params)
+    flash[:notice] = "Book was successfully updated."
+    # "updated successfully"
+    redirect_to book_path(@list.id) 
+  else
+    render :edit
+  end
   end
   
   def destroy
     list = Book.find(params[:id])
     list.destroy
-    flash[:notice] = "deleted successfully"
+    flash[:notice] = "Book was successfully destroyed."
+    # "deleted successfully"
     redirect_to '/books'
   end
   
