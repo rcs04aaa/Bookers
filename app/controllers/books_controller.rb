@@ -7,7 +7,8 @@ class BooksController < ApplicationController
       # "created successfully"
       redirect_to book_path(@list.id)
     else
-      render :new
+      @lists = Book.all
+      render :index
     end
   end
 
